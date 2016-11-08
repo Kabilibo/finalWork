@@ -7,12 +7,13 @@ public class Product {
 	private String summary;
 	private byte[] detailByte;
 	private byte[] imageByte;
-	private int price;
+	private int sqlPrice;
+	private double price;
 	private String image;
 	private String detail;
 	private String isBuy = null;
 	private String isSell = null;
-	private int buyPrice = 0;
+	private double buyPrice;
 	
 	public String getTitle() {
 		return title;
@@ -26,12 +27,7 @@ public class Product {
 	public void setSummary(String summary) {
 		this.summary = summary;
 	}
-	public int getPrice() {
-		return price;
-	}
-	public void setPrice(int price) {
-		this.price = price;
-	}
+	
 	public String getIsBuy() {
 		return isBuy;
 	}
@@ -74,11 +70,23 @@ public class Product {
 	public void setDetail(String detail) {
 		this.detail = detail;
 	}
-	public int getBuyPrice() {
+	public double getBuyPrice() {
 		return buyPrice;
 	}
-	public void setBuyPrice(int buyPrice) {
+	public void setBuyPrice(double buyPrice) {
 		this.buyPrice = buyPrice;
+	}
+	public int getSqlPrice() {
+		return sqlPrice;
+	}
+	public void setSqlPrice(int sqlPrice) {
+		this.sqlPrice = sqlPrice;
+	}
+	public double getPrice() {
+		return price;
+	}
+	public void setPrice() {
+		this.price = sqlPrice/100.0;
 	}
 	
 	

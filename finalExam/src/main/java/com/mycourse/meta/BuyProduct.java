@@ -8,7 +8,8 @@ public class BuyProduct {
 	private String title;
 	private String image;
 	private long buyTime;
-	private int buyPrice;
+	private int buySqlPrice;
+	private double buyPrice;
 	
 	public int getId() {
 		return id;
@@ -22,12 +23,7 @@ public class BuyProduct {
 	public void setBuyTime(long buyTime) {
 		this.buyTime = buyTime;
 	}
-	public int getBuyPrice() {
-		return buyPrice;
-	}
-	public void setBuyPrice(int buyPrice) {
-		this.buyPrice = buyPrice;
-	}
+	
 	
 	public int getPersonId() {
 		return personId;
@@ -48,11 +44,23 @@ public class BuyProduct {
 	public void setImage(String image) {
 		this.image = image;
 	}
+	public int getBuySqlPrice() {
+		return buySqlPrice;
+	}
+	public void setBuySqlPrice(int buySqlPrice) {
+		this.buySqlPrice = buySqlPrice;
+	}
 	public String getTitle() {
 		return title;
 	}
 	public void setTitle(String title) {
 		this.title = title;
+	}
+	public double getBuyPrice() {
+		return buyPrice;
+	}
+	public void setBuyPrice(double buyPrice) {
+		this.buyPrice = buySqlPrice/100.0;
 	}
 	
 	

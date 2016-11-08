@@ -77,10 +77,10 @@ public class ApiController {
 	@RequestMapping(path="/api/buy")
 	public String buyProduct(@RequestParam("id") int productId, HttpServletRequest request, ModelMap map){
 		
-		int price = contentDao.getProductById(productId).getPrice();
+		double price = contentDao.getProductById(productId).getPrice();
 		long time = (new java.sql.Date(new java.util.Date().getTime())).getTime();
 		int userId = ((User)(request.getSession().getAttribute("user"))).getId();
-		if (trxDao.addTrx(productId, userId, price, time)){
+		if (trxDao.addTrx(productId, userId, (int)price*100, time)){
 			map.addAttribute("code", 200);
 			map.addAttribute("message", "");
 			map.addAttribute("result", true);

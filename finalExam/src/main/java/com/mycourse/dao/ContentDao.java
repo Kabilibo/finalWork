@@ -21,7 +21,7 @@ public interface ContentDao {
 	
 	@Results({
 		@Result(property="id",column="id"),
-		@Result(property="price",column="price"),
+		@Result(property="sqlPrice",column="price"),
 		@Result(property="title",column="title"),
 		@Result(property="summary",column="abstract"),
 		@Result(property="detailByte",column="text"),
@@ -32,7 +32,7 @@ public interface ContentDao {
 	
 	@Results({
 		@Result(property="id",column="id"),
-		@Result(property="price",column="price"),
+		@Result(property="sqlPrice",column="price"),
 		@Result(property="title",column="title"),
 		@Result(property="summary",column="abstract"),
 		@Result(property="detailByte",column="text"),
@@ -43,7 +43,7 @@ public interface ContentDao {
 	
 	@Results({
 		@Result(property="id",column="id"),
-		@Result(property="price",column="price"),
+		@Result(property="sqlPrice",column="price"),
 		@Result(property="title",column="title"),
 		@Result(property="summary",column="abstract"),
 		@Result(property="detailByte",column="text"),

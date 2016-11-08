@@ -20,7 +20,7 @@ public interface TrxDao {
 		@Result(property="personId",column="personId"),
 		@Result(property="id",column="contentId"),
 		@Result(property="buyTime",column="time"),
-		@Result(property="buyPrice",column="price")
+		@Result(property="buySqlPrice",column="price")
 	})
 	@Select("select * from trx where personId=#{personId}")
 	List<BuyProduct> getProductsByUser(@Param("personId")int userId);
@@ -29,7 +29,7 @@ public interface TrxDao {
 		@Result(property="personId",column="personId"),
 		@Result(property="id",column="contentId"),
 		@Result(property="buyTime",column="time"),
-		@Result(property="buyPrice",column="price")
+		@Result(property="buySqlPrice",column="price")
 	})
 	@Select("select * from trx where contentId=#{contentId}")
 	BuyProduct getProductByProduct(@Param("contentId")int contentId);

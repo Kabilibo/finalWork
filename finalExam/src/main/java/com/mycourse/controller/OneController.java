@@ -42,6 +42,7 @@ public class OneController {
 				}
 				each.setImage(new String(each.getImageByte()));
 				each.setDetail(new String(each.getDetailByte(),"UTF-8"));
+				each.setPrice();
 			}
 			map.addAttribute("productList", products);
 		}
@@ -73,6 +74,7 @@ public class OneController {
 		}
 		product.setImage(new String(product.getImageByte()));
 		product.setDetail(new String(product.getDetailByte(),"UTF-8"));
+		product.setPrice();
 		map.addAttribute("product", product);
 		return "show";
 	}
@@ -99,12 +101,12 @@ public class OneController {
 	
 	@RequestMapping(path="/publicSubmit", method=RequestMethod.POST)
 	public String publicSubmit(@RequestParam String title, @RequestParam String summary, @RequestParam String image,
-			@RequestParam String detail, @RequestParam int price, ModelMap map) 
+			@RequestParam String detail, @RequestParam double price, ModelMap map) 
 					throws SerialException, UnsupportedEncodingException, SQLException{
 		Blob imageBlob = new SerialBlob(image.getBytes("UTF-8"));
 		Blob detailBlob = new SerialBlob(detail.getBytes("UTF-8"));
 		
-		contentDao.addProduct(title, price, imageBlob, summary, detailBlob);
+		contentDao.addProduct(title, (int)(price*100), imageBlob, summary, detailBlob);
 		
 		Product product = contentDao.getProductByTitle(title);
 		map.addAttribute("product", product);
@@ -122,13 +124,13 @@ public class OneController {
 	
 	@RequestMapping(path="/editSubmit", method=RequestMethod.POST)
 	public String editSubmit(@RequestParam String title, @RequestParam String summary, @RequestParam String image,
-			@RequestParam String detail, @RequestParam int price, ModelMap map, HttpServletRequest request) 
+			@RequestParam String detail, @RequestParam double price, ModelMap map, HttpServletRequest request) 
 					throws SerialException, UnsupportedEncodingException, SQLException{
-		Blob imageBlob = new SerialBlob(image.getBytes("GNK"));
-		Blob detailBlob = new SerialBlob(detail.getBytes("GBK"));
+		Blob imageBlob = new SerialBlob(image.getBytes("GBK"));
+		Blob detailBlob = new SerialBlob(detail.getBytes("UTF-8"));
 		int productId = Integer.parseInt(request.getParameter("id"));
 		
-		contentDao.updateProduct(productId, title, price, imageBlob, summary, detailBlob);
+		contentDao.updateProduct(productId, title, (int)(price*100), imageBlob, summary, detailBlob);
 		
 		Product product = contentDao.getProductById(productId);
 		
